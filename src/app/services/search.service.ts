@@ -9,34 +9,28 @@ import { Movie } from '../models/movie';
 export class SearchService {
   constructor(private apollo: Apollo) {}
 
-  searchMovies(query: String): Movie[] {
-    let movies: Movie[] = [];
-    this.apollo
-      .watchQuery<Movie[]>({
-        query: gql` 
-      {
-        searchMovies(query: "${query}") {
-          id
+  SEARCH_MOVIES = gql`
+    query SearchMovies($query: String!) {
+      searchMovies(query: $query) {
+        id
+        name
+        overview
+        releaseDate
+        genres {
           name
-          overview
-          releaseDate
-          cast {
-            id
-            person {
-              name
-            }
-            role {
-              ... on Cast {
-                character
-              }
-            }
-          }
         }
-      }`,
-      })
-      .valueChanges.subscribe((result: any) => {
-        movies = result;
-      });
-    return movies;
+        score
+      }
+    }
+  `;
+
+  searchMoviesQuery(query: String) {
+    return this.apollo.watchQuery<any>({
+      query: this.SEARCH_MOVIES,
+      variables: {
+        query: query,
+      },
+      errorPolicy: 'all',
+    });
   }
 }

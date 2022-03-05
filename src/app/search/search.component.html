@@ -4,7 +4,12 @@
       <mat-label>Search for movies</mat-label>
       <input name="searchInput" matInput [(ngModel)]="query" />
     </mat-form-field>
-    <button mat-flat-button color="primary" (click)="searchMovies()">
+    <button
+      [disabled]="query === '' ? 'disabled' : null"
+      mat-flat-button
+      color="primary"
+      (click)="searchMovies()"
+    >
       Search
     </button>
   </form>
