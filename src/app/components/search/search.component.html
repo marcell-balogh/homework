@@ -4,38 +4,14 @@
       <mat-label>Search for movies</mat-label>
       <input name="searchInput" matInput [(ngModel)]="query" />
     </mat-form-field>
-    <button
+    <a
       [disabled]="query === '' ? 'disabled' : null"
       mat-flat-button
       color="primary"
-      (click)="searchMovies()"
+      [routerLink]="['/search']"
+      [queryParams]="{ query: query }"
     >
       Search
-    </button>
+    </a>
   </form>
-  <div class="spinner-container" *ngIf="loading">
-    <mat-spinner></mat-spinner>
-    <h3>Searching...</h3>
-  </div>
-  <div *ngIf="!loading">
-    <mat-card *ngFor="let movie of movies">
-      <mat-card-header>
-        <mat-card-title>{{ movie.name }}</mat-card-title>
-        <mat-card-subtitle>
-          {{ movie.releaseDate | date: "mediumDate" }} |
-          <span
-            class="genres"
-            *ngFor="let genre of movie.genres; let isLast = last"
-          >
-            {{ genre.name }}{{ isLast ? "" : ", " }}</span
-          >
-          |
-          {{ movie.score }}
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>{{ movie.overview }}</p>
-      </mat-card-content>
-    </mat-card>
-  </div>
 </div>
