@@ -11,13 +11,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 import { SearchService } from './services/search.service';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ListComponent } from './components/list/list.component';
+import { MoreInfoComponent } from './components/more-info/more-info.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent, ListComponent],
+  declarations: [AppComponent, SearchComponent, ListComponent, MoreInfoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,6 +28,7 @@ import { ListComponent } from './components/list/list.component';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
     GraphQLModule,
     HttpClientModule,
     MatCardModule,

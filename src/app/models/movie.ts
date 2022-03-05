@@ -1,22 +1,22 @@
 export interface Movie {
-  id: Number;
-  name: String;
-  tagline: String;
-  overview: String;
+  id: number;
+  name: string;
+  tagline: string;
+  overview: string;
   genres: Genre[];
   releaseDate: Date;
-  runtime: Number;
-  budget: Number;
-  revenue: String;
+  runtime: number;
+  budget: number;
+  revenue: string;
   adult: Boolean;
   homepage: URL;
-  popularity: Number;
+  popularity: number;
   score: number;
-  votes: Number;
+  votes: number;
   similar: Movie[];
 }
 
 export interface Genre {
-  id: Number;
+  id: number;
   name: string;
 }

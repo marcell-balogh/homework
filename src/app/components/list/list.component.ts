@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
 import { SearchService } from 'src/app/services/search.service';
+import { MoreInfoComponent } from '../more-info/more-info.component';
 
 @Component({
   selector: 'app-list',
@@ -16,7 +18,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private searchService: SearchService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -37,5 +40,13 @@ export class ListComponent implements OnInit {
         }
         this.error = error;
       });
+  }
+
+  openMoreInfo(movieName: string) {
+    this.dialog.open(MoreInfoComponent, {
+      data: {
+        movieName: movieName,
+      },
+    });
   }
 }
