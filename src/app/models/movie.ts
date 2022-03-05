@@ -3,6 +3,7 @@ export interface Movie {
   name: String;
   tagline: String;
   overview: String;
+  genres: Genre[];
   releaseDate: Date;
   runtime: Number;
   budget: Number;
@@ -10,7 +11,12 @@ export interface Movie {
   adult: Boolean;
   homepage: URL;
   popularity: Number;
-  score: Number;
+  score: number;
   votes: Number;
   similar: Movie[];
+}
+
+export interface Genre {
+  id: Number;
+  name: string;
 }

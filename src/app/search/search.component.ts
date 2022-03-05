@@ -26,17 +26,10 @@ export class SearchComponent implements OnInit, OnDestroy {
         name
         overview
         releaseDate
-        cast {
-          id
-          person {
-            name
-          }
-          role {
-            ... on Cast {
-              character
-            }
-          }
+        genres {
+          name
         }
+        score
       }
     }
   `;
