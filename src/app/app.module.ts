@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
@@ -14,9 +14,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SearchService } from './services/search.service';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent],
+  declarations: [AppComponent, SearchComponent, ListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
