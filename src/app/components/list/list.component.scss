@@ -18,6 +18,21 @@
   white-space: nowrap;
 }
 
+.similar{
+  margin-bottom: 2rem;
+}
+
+.similar-content{
+  display: flex;
+  align-items: center;
+  & .similar-to{
+    font-size: 1.2rem;
+  }
+  & .movie-name{
+    font-weight: 600;
+  }
+}
+
 mat-card {
   text-align: left;
   margin: 0.5rem 0;

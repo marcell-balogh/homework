@@ -3,23 +3,34 @@
     <mat-spinner></mat-spinner>
     <h3>Searching...</h3>
   </div>
+  <div class="similar" *ngIf="!loading && movieId">
+    <mat-card>
+      <mat-card-content class="similar-content">
+        <button mat-button (click)="back()">
+          <mat-icon class="material-icons-outlined">
+            arrow_back
+          </mat-icon>
+        </button>
+        <span class="similar-to">Similar to:
+          <span class="movie-name">{{movie.name}}</span>
+        </span>
+      </mat-card-content>
+    </mat-card>
+  </div>
   <div *ngIf="!loading && movies.length > 0">
     <mat-card *ngFor="let movie of movies">
       <mat-card-header>
         <mat-card-title>
           <a class="title" (click)="openMoreInfo(movie.name)">{{
             movie.name
-          }}</a>
+            }}</a>
         </mat-card-title>
         <mat-card-subtitle>
           <span *ngIf="movie.releaseDate">{{
             movie.releaseDate | date: "mediumDate"
-          }}</span>
+            }}</span>
           <span *ngIf="movie.genres != [] && movie.releaseDate"> |</span>
-          <span
-            class="genres"
-            *ngFor="let genre of movie.genres; let isLast = last"
-          >
+          <span class="genres" *ngFor="let genre of movie.genres; let isLast = last">
             {{ genre.name }}{{ isLast ? "" : ", " }}
           </span>
           <span *ngIf="movie.score">| {{ movie.score }}</span>

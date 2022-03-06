@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
 import { MovieService } from 'src/app/services/movie.service';
 import { MoreInfoComponent } from '../more-info/more-info.component';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-list',
@@ -13,13 +14,15 @@ import { MoreInfoComponent } from '../more-info/more-info.component';
 export class ListComponent implements OnInit {
   query: string = '';
   movieId: string = '';
+  movie: Movie = {} as Movie;
   movies: Movie[] = [];
   loading: boolean = false;
 
   constructor(
     private movieService: MovieService,
     private route: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -34,12 +37,18 @@ export class ListComponent implements OnInit {
       }
     });
   }
+
+  back(){
+    this.location.back();
+  }
+
   getSimilarMovies() {
     this.movieService
       .getMovieQuery(this.movieId)
       .valueChanges.subscribe(({ data, loading }) => {
         this.loading = loading;
         if (data) {
+          this.movie = data.movie;
           this.movies = data.movie.similar;
         }
       });
