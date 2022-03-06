@@ -8,16 +8,19 @@ import { Movie } from '../../models/movie';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  query: String = '';
+  query: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router) { }
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.query = params.query;
     });
   }
 
-  submitForm(){
-    this.router.navigate(["/search"], {queryParams: {query: this.query}})
+  submitForm() {
+    if (this.query!==undefined) {
+      this.query.length
+      this.router.navigate(["/search"], { queryParams: { query: this.query } })
+    }
   }
 }

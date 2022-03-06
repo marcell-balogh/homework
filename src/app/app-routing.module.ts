@@ -4,7 +4,8 @@ import { ListComponent } from './components/list/list.component';
 
 const routes: Routes = [
   { path: 'search', component: ListComponent },
-  { path: 'similar', component: ListComponent }
+  { path: 'similar', component: ListComponent },
+  { path: '**', pathMatch: 'full', redirectTo: '/'}
 ];
 
 @NgModule({

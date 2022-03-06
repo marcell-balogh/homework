@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.query = params.query;
       this.movieId = params.movieId;
-      if (this.query !== undefined) {
+      if (this.query) {
         this.searchMovies();
       }
       else if (this.movieId !== undefined) {

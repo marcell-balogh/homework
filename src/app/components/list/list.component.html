@@ -3,7 +3,7 @@
     <mat-spinner></mat-spinner>
     <h3>Searching...</h3>
   </div>
-  <div *ngIf="!loading">
+  <div *ngIf="!loading && movies.length > 0">
     <mat-card *ngFor="let movie of movies">
       <mat-card-header>
         <mat-card-title>
@@ -33,5 +33,9 @@
         <a mat-button [routerLink]="['/similar']" [queryParams]="{movieId: movie.id}" color="primary">FIND SIMILAR</a>
       </mat-card-actions>
     </mat-card>
+  </div>
+  <div *ngIf="!loading && movies.length == 0">
+    <h3 class="nothing-found">No movies found. Try a different search word!</h3>
+    {{movies}}
   </div>
 </div>

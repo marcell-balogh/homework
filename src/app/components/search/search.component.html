@@ -5,7 +5,7 @@
       <input name="searchInput" matInput [(ngModel)]="query" />
     </mat-form-field>
     <a
-      [disabled]="query === '' ? 'disabled' : null"
+      [disabled]="query === undefined ? 'disabled' : null"
       mat-flat-button
       color="primary"
       [routerLink]="['/search']"
