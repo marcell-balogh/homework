@@ -12,7 +12,7 @@ export class LinkService {
 
   getExtract(title: string): Observable<WikiResult> {
     return this.http.get<WikiResult>(
-      `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro=&explaintext=&titles=${title}`
+      `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&exintro=&explaintext=&titles=${title}`
     );
   }
 
