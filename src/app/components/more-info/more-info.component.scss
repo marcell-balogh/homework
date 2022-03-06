@@ -4,6 +4,12 @@
   align-items: center;
 }
 
-h2 {
+h2{
   align-self: flex-start;
+}
+
+.imdb{
+  display: flex;
+  align-items: center;
+  color: #3d3d3d; 
 }

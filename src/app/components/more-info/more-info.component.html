@@ -2,25 +2,20 @@
   <h2 mat-dialog-title>{{ data.movieName }}</h2>
   <mat-spinner *ngIf="!loaded"></mat-spinner>
   <mat-dialog-content *ngIf="loaded && extract">
-    <h3>More info from Wikipedia</h3>
+    <h3>Wikipedia</h3>
     <p>
       {{ extract }}
     </p>
-    <a href="https://en.wikipedia.org/?curid={{ wikiId }}" target="_blank">
-      Read the whole article
-    </a>
+    <h3 class="imdb" *ngIf="imdb">
+      IMDB Rating: {{imdb.imdbRating}}
+    </h3>
   </mat-dialog-content>
   <mat-dialog-content *ngIf="loaded && !extract">
     <h3>No additional information found.</h3>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <a
-      *ngIf="imdbId"
-      href="https://www.imdb.com/title/{{ imdbId }}/"
-      target="_blank"
-      mat-button
-      >IMDB</a
-    >
+    <a *ngIf="loaded && extract" href="https://en.wikipedia.org/?curid={{ wikiId }}" target="_blank" mat-button>WIKI</a>
+    <a *ngIf="imdb" href="https://www.imdb.com/title/{{ imdb.imdbID }}/" target="_blank" mat-button>IMDB</a>
     <button mat-button mat-dialog-close cdkFocusInitial>CLOSE</button>
   </mat-dialog-actions>
 </div>

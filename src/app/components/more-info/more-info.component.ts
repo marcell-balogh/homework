@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { IMDBModel } from 'src/app/models/imdb';
 import { LinkService } from 'src/app/services/link.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { LinkService } from 'src/app/services/link.service';
 export class MoreInfoComponent implements OnInit {
   extract: string = '';
   wikiId: string = '';
-  imdbId: string = '';
+  imdb: IMDBModel = {} as IMDBModel;
   loaded: boolean = false;
   constructor(
     @Inject(MAT_DIALOG_DATA)
@@ -38,7 +39,7 @@ export class MoreInfoComponent implements OnInit {
 
   getIMDBLink() {
     this.linkService.getIMDBLink(this.data.movieName).subscribe((data) => {
-      this.imdbId = data.imdbID;
+      this.imdb= data;
     });
   }
 }
