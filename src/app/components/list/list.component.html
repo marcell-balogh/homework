@@ -7,12 +7,11 @@
     <mat-card>
       <mat-card-content class="similar-content">
         <button mat-button (click)="back()">
-          <mat-icon class="material-icons-outlined">
-            arrow_back
-          </mat-icon>
+          <mat-icon class="material-icons-outlined"> arrow_back </mat-icon>
         </button>
-        <span class="similar-to">Similar to:
-          <span class="movie-name">{{movie.name}}</span>
+        <span class="similar-to"
+          >Similar to:
+          <span class="movie-name">{{ movie.name }}</span>
         </span>
       </mat-card-content>
     </mat-card>
@@ -23,14 +22,17 @@
         <mat-card-title>
           <a class="title" (click)="openMoreInfo(movie.name)">{{
             movie.name
-            }}</a>
+          }}</a>
         </mat-card-title>
         <mat-card-subtitle>
           <span *ngIf="movie.releaseDate">{{
             movie.releaseDate | date: "mediumDate"
-            }}</span>
+          }}</span>
           <span *ngIf="movie.genres != [] && movie.releaseDate"> |</span>
-          <span class="genres" *ngFor="let genre of movie.genres; let isLast = last">
+          <span
+            class="genres"
+            *ngFor="let genre of movie.genres; let isLast = last"
+          >
             {{ genre.name }}{{ isLast ? "" : ", " }}
           </span>
           <span *ngIf="movie.score">| {{ movie.score }}</span>
@@ -41,12 +43,18 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-button (click)="openMoreInfo(movie.name)">MORE INFO</button>
-        <a mat-button [routerLink]="['/similar']" [queryParams]="{movieId: movie.id}" color="primary">FIND SIMILAR</a>
+        <a
+          mat-button
+          [routerLink]="['/similar']"
+          [queryParams]="{ movieId: movie.id }"
+          color="primary"
+          >FIND SIMILAR</a
+        >
       </mat-card-actions>
     </mat-card>
   </div>
   <div *ngIf="!loading && movies.length == 0">
     <h3 class="nothing-found">No movies found. Try a different search word!</h3>
-    {{movies}}
+    {{ movies }}
   </div>
 </div>

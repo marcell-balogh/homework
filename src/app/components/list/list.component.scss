@@ -1,4 +1,4 @@
-.list-container{
+.list-container {
   padding: 0 5%;
 }
 
@@ -13,22 +13,22 @@
   }
 }
 
-.nothing-found{
+.nothing-found {
   margin-top: 2rem;
   white-space: nowrap;
 }
 
-.similar{
+.similar {
   margin-bottom: 2rem;
 }
 
-.similar-content{
+.similar-content {
   display: flex;
   align-items: center;
-  & .similar-to{
+  & .similar-to {
     font-size: 1.2rem;
   }
-  & .movie-name{
+  & .movie-name {
     font-weight: 600;
   }
 }

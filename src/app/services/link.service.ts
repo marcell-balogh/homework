@@ -16,7 +16,6 @@ export class LinkService {
     );
   }
 
-  //http://www.omdbapi.com/?apikey=ec3b6a3d&t=fight+club
   //http://www.omdbapi.com/
   API_KEY = 'ec3b6a3d';
 

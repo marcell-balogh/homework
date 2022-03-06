@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
 import { MovieService } from 'src/app/services/movie.service';
 import { MoreInfoComponent } from '../more-info/more-info.component';
-import { Location } from '@angular/common'
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-list',
@@ -23,7 +23,7 @@ export class ListComponent implements OnInit {
     private route: ActivatedRoute,
     public dialog: MatDialog,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -31,14 +31,13 @@ export class ListComponent implements OnInit {
       this.movieId = params.movieId;
       if (this.query) {
         this.searchMovies();
-      }
-      else if (this.movieId !== undefined) {
+      } else if (this.movieId !== undefined) {
         this.getSimilarMovies();
       }
     });
   }
 
-  back(){
+  back() {
     this.location.back();
   }
 

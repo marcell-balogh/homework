@@ -39,7 +39,7 @@ export class MoreInfoComponent implements OnInit {
 
   getIMDBLink() {
     this.linkService.getIMDBLink(this.data.movieName).subscribe((data) => {
-      this.imdb= data;
+      this.imdb = data;
     });
   }
 }

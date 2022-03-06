@@ -10,7 +10,7 @@ import { Movie } from '../../models/movie';
 export class SearchComponent implements OnInit {
   query: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router) {}
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.query = params.query;
@@ -18,9 +18,9 @@ export class SearchComponent implements OnInit {
   }
 
   submitForm() {
-    if (this.query!==undefined) {
-      this.query.length
-      this.router.navigate(["/search"], { queryParams: { query: this.query } })
+    if (this.query !== undefined) {
+      this.query.length;
+      this.router.navigate(['/search'], { queryParams: { query: this.query } });
     }
   }
 }
