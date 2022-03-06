@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
-import { SearchService } from 'src/app/services/search.service';
+import { MovieService } from 'src/app/services/movie.service';
 import { MoreInfoComponent } from '../more-info/more-info.component';
 
 @Component({
@@ -14,10 +14,9 @@ export class ListComponent implements OnInit {
   query: string = '';
   movies: Movie[] = [];
   loading: boolean = false;
-  error: any;
 
   constructor(
-    private searchService: SearchService,
+    private movieService: MovieService,
     private route: ActivatedRoute,
     public dialog: MatDialog
   ) {}
@@ -31,14 +30,13 @@ export class ListComponent implements OnInit {
   }
 
   searchMovies() {
-    this.searchService
+    this.movieService
       .searchMoviesQuery(this.query)
-      .valueChanges.subscribe(({ data, loading, error }) => {
+      .valueChanges.subscribe(({ data, loading }) => {
         this.loading = loading;
         if (data) {
           this.movies = data.searchMovies;
         }
-        this.error = error;
       });
   }
 

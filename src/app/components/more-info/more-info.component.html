@@ -1,1 +1,20 @@
-<p>{{ data.movieName }}</p>
+<div class="more-info-container">
+  <h2 mat-dialog-title>{{ data.movieName }}</h2>
+  <mat-spinner *ngIf="!loaded"></mat-spinner>
+  <mat-dialog-content *ngIf="loaded">
+    <h3>More info from Wikipedia</h3>
+    <p>
+      {{ extract }}
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <a
+      href="https://en.wikipedia.org/?curid={{ wikiId }}"
+      target="_blank"
+      mat-button
+      mat-dialog-close
+      >READ THE WHOLE ARTICLE</a
+    >
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>CLOSE</button>
+  </mat-dialog-actions>
+</div>
