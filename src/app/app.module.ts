@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListComponent } from './components/list/list.component';
 import { MoreInfoComponent } from './components/more-info/more-info.component';
 import { LinkService } from './services/link.service';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LinkService } from './services/link.service';
     SearchComponent,
     ListComponent,
     MoreInfoComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

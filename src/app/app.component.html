@@ -1,7 +1,10 @@
-<mat-toolbar color="primary">
-  <a [routerLink]="['/']">Zoosh Homework</a>
-</mat-toolbar>
 <div class="app-container">
-  <app-search></app-search>
-  <router-outlet></router-outlet>
+  <div class="content-wrap">
+    <mat-toolbar color="primary">
+      <a [routerLink]="['/']">Zoosh Homework</a>
+    </mat-toolbar>
+    <app-search></app-search>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </div>
 </div>
