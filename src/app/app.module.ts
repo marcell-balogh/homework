@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { MovieService } from './services/movie.service';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -35,6 +36,7 @@ import { LinkService } from './services/link.service';
     MatIconModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatToolbarModule,
     GraphQLModule,
     HttpClientModule,
     MatCardModule,
