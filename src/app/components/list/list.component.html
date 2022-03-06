@@ -7,7 +7,9 @@
     <mat-card *ngFor="let movie of movies">
       <mat-card-header>
         <mat-card-title>
-          {{ movie.name }}
+          <a class="title" (click)="openMoreInfo(movie.name)">{{
+            movie.name
+          }}</a>
         </mat-card-title>
         <mat-card-subtitle>
           <span *ngIf="movie.releaseDate">{{
