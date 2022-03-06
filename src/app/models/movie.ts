@@ -6,6 +6,7 @@ export interface Movie {
   genres: Genre[];
   releaseDate: Date;
   runtime: number;
+  socialMedia: SocialMedia;
   budget: number;
   revenue: string;
   adult: Boolean;
@@ -19,4 +20,12 @@ export interface Movie {
 export interface Genre {
   id: number;
   name: string;
+}
+
+export interface SocialMedia {
+  id: string;
+  imdb: string;
+  facebook: string;
+  instagram: string;
+  twitter: string;
 }

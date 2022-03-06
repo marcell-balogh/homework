@@ -12,14 +12,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
-import { SearchService } from './services/search.service';
+import { MovieService } from './services/movie.service';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ListComponent } from './components/list/list.component';
 import { MoreInfoComponent } from './components/more-info/more-info.component';
+import { LinkService } from './services/link.service';
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent, ListComponent, MoreInfoComponent],
+  declarations: [
+    AppComponent,
+    SearchComponent,
+    ListComponent,
+    MoreInfoComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,7 +40,7 @@ import { MoreInfoComponent } from './components/more-info/more-info.component';
     MatCardModule,
     FormsModule,
   ],
-  providers: [SearchService],
+  providers: [MovieService, LinkService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

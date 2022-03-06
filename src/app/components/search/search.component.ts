@@ -1,9 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Apollo, gql, QueryRef } from 'apollo-angular';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../../models/movie';
-import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search',
