@@ -1,5 +1,5 @@
 <div class="search-container">
-  <form class="example-form">
+  <form class="example-form" (ngSubmit)="submitForm()">
     <mat-form-field appearance="standard">
       <mat-label>Search for movies</mat-label>
       <input name="searchInput" matInput [(ngModel)]="query" />

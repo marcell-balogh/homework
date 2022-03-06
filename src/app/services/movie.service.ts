@@ -22,7 +22,7 @@ export class MovieService {
     }
   `;
   GET_MOVIE = gql`
-    query getMovie {
+    query getMovie($id: ID!) {
       movie(id: $id) {
         id
         name

@@ -30,6 +30,7 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-button (click)="openMoreInfo(movie.name)">MORE INFO</button>
+        <a mat-button [routerLink]="['/similar']" [queryParams]="{movieId: movie.id}" color="primary">FIND SIMILAR</a>
       </mat-card-actions>
     </mat-card>
   </div>

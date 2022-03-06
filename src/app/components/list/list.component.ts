@@ -12,6 +12,7 @@ import { MoreInfoComponent } from '../more-info/more-info.component';
 })
 export class ListComponent implements OnInit {
   query: string = '';
+  movieId: string = '';
   movies: Movie[] = [];
   loading: boolean = false;
 
@@ -19,14 +20,29 @@ export class ListComponent implements OnInit {
     private movieService: MovieService,
     private route: ActivatedRoute,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.query = params.query;
-      console.log(this.query);
-      this.searchMovies();
+      this.movieId = params.movieId;
+      if (this.query !== undefined) {
+        this.searchMovies();
+      }
+      else if (this.movieId !== undefined) {
+        this.getSimilarMovies();
+      }
     });
+  }
+  getSimilarMovies() {
+    this.movieService
+      .getMovieQuery(this.movieId)
+      .valueChanges.subscribe(({ data, loading }) => {
+        this.loading = loading;
+        if (data) {
+          this.movies = data.movie.similar;
+        }
+      });
   }
 
   searchMovies() {
