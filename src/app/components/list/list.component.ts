@@ -1,29 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
 import { MovieService } from 'src/app/services/movie.service';
 import { MoreInfoComponent } from '../more-info/more-info.component';
 import { Location } from '@angular/common';
+import { Title } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
   query: string = '';
   movieId: string = '';
   movie: Movie = {} as Movie;
   movies: Movie[] = [];
   loading: boolean = false;
 
+  private similarSubscription: Subscription = new Subscription();
+  private searchSubscription: Subscription = new Subscription();
+
   constructor(
     private movieService: MovieService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    private location: Location
+    private location: Location,
+    private titleService: Title
   ) {}
+
+  ngOnDestroy(): void {
+    this.similarSubscription.unsubscribe();
+    this.searchSubscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -31,8 +42,10 @@ export class ListComponent implements OnInit {
       this.movieId = params.movieId;
       if (this.query) {
         this.searchMovies();
+        this.titleService.setTitle(`Search results for ${this.query}`);
       } else if (this.movieId !== undefined) {
         this.getSimilarMovies();
+        this.titleService.setTitle(`Similar movies for ${this.movieId}`);
       }
     });
   }
@@ -42,7 +55,7 @@ export class ListComponent implements OnInit {
   }
 
   getSimilarMovies() {
-    this.movieService
+    this.similarSubscription = this.movieService
       .getMovieQuery(this.movieId)
       .valueChanges.subscribe(({ data, loading }) => {
         this.loading = loading;
@@ -54,7 +67,7 @@ export class ListComponent implements OnInit {
   }
 
   searchMovies() {
-    this.movieService
+    this.searchSubscription = this.movieService
       .searchMoviesQuery(this.query)
       .valueChanges.subscribe(({ data, loading }) => {
         this.loading = loading;

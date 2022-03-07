@@ -2,7 +2,8 @@
   <h2 mat-dialog-title>{{ data.movieName }}</h2>
   <mat-spinner *ngIf="!loaded || !imdbLoaded"></mat-spinner>
   <mat-dialog-content *ngIf="loaded && imdbLoaded && extract">
-    <h3>Wikipedia</h3>
+    <h3>Description from Wikipedia</h3>
+    {{ extract }}
     <p>
       {{ extract }}
     </p>
@@ -25,6 +26,8 @@
       mat-button
       >IMDB</a
     >
-    <button mat-button mat-dialog-close cdkFocusInitial>CLOSE</button>
+    <button mat-button color="warn" mat-dialog-close cdkFocusInitial>
+      CLOSE
+    </button>
   </mat-dialog-actions>
 </div>
