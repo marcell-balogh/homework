@@ -4,7 +4,7 @@ This project was made for Zoosh, as a homework after the interview. The task was
 
 ## Preview
 
-To preview the project first run `npm install`, then you can run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+To preview the project first run `npm install`, then you can run `npm run start` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## Screenshots
 
