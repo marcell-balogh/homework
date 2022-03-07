@@ -4,7 +4,7 @@ export interface Movie {
   tagline: string;
   overview: string;
   genres: Genre[];
-  releaseDate: Date;
+  releaseDate: string;
   runtime: number;
   socialMedia: SocialMedia;
   budget: number;

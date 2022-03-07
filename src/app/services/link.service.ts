@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IMDBModel } from '../models/imdb';
+import { ImdbDetails, ImdbResults } from '../models/imdb';
 import { WikiResult } from '../models/wikipedia';
 
 @Injectable({
@@ -16,12 +16,12 @@ export class LinkService {
     );
   }
 
-  //http://www.omdbapi.com/
-  API_KEY = 'ec3b6a3d';
+  //https://imdb-api.com/
+  API_KEY = 'k_51h50o51';
 
-  getIMDBLink(movieName: string): Observable<IMDBModel> {
-    return this.http.get<IMDBModel>(
-      `http://www.omdbapi.com/?apikey=${this.API_KEY}&t=${movieName}`
+  getImdbID(movieName: string, year: string): Observable<ImdbResults> {
+    return this.http.get<ImdbResults>(
+      `https://imdb-api.com/en/API/SearchMovie/${this.API_KEY}/${movieName}%20${year}`
     );
   }
 }

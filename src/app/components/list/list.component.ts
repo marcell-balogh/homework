@@ -64,10 +64,13 @@ export class ListComponent implements OnInit {
       });
   }
 
-  openMoreInfo(movieName: string) {
+  openMoreInfo(movieName: string, year: string) {
+    console.log(movieName, year);
+    const date = new Date(year);
     this.dialog.open(MoreInfoComponent, {
       data: {
         movieName: movieName,
+        year: date.getFullYear().toString(),
       },
     });
   }
