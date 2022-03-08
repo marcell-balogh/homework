@@ -19,6 +19,7 @@ export class LinkService {
   //https://imdb-api.com/
   API_KEY = 'k_51h50o51';
 
+  //This was needed because the API didn't return the social media links to movies
   getImdbID(movieName: string, year: string): Observable<ImdbResults> {
     return this.http.get<ImdbResults>(
       `https://imdb-api.com/en/API/SearchMovie/${this.API_KEY}/${movieName}%20${year}`
