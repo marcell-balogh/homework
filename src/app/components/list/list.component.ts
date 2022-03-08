@@ -32,6 +32,7 @@ export class ListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnDestroy(): void {
+    this.titleService.setTitle('Homework');
     this.similarSubscription.unsubscribe();
     this.searchSubscription.unsubscribe();
   }
@@ -45,7 +46,6 @@ export class ListComponent implements OnInit, OnDestroy {
         this.titleService.setTitle(`Search results for ${this.query}`);
       } else if (this.movieId !== undefined) {
         this.getSimilarMovies();
-        this.titleService.setTitle(`Similar movies for ${this.movieId}`);
       }
     });
   }
@@ -62,6 +62,7 @@ export class ListComponent implements OnInit, OnDestroy {
         if (data) {
           this.movie = data.movie;
           this.movies = data.movie.similar;
+          this.titleService.setTitle(`Similar movies for ${this.movie.name}`);
         }
       });
   }

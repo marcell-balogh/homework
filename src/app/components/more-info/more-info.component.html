@@ -3,7 +3,6 @@
   <mat-spinner *ngIf="!loaded || !imdbLoaded"></mat-spinner>
   <mat-dialog-content *ngIf="loaded && imdbLoaded && extract">
     <h3>Description from Wikipedia</h3>
-    {{ extract }}
     <p>
       {{ extract }}
     </p>
