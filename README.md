@@ -1,6 +1,6 @@
-# Zoosh Homework
+# Homework
 
-This project was made for Zoosh, as a homework after the interview. The task was to create a purely frontend app for findig movies using their API.
+This project was made as a homework after the interview. The task was to create a purely frontend app for findig movies using the company's API.
 
 ## Preview
 
